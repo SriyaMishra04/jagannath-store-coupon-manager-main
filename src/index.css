@@ -1,0 +1,199 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.coupon-sheet {
+  display: flex;
+  width: 210mm;
+  height: 148mm;
+  background: white;
+  overflow: hidden;
+}
+
+.coupon-copy {
+  position: relative;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 7mm 7mm 6mm;
+  overflow: hidden;
+  background: white;
+}
+
+.coupon-copy:first-child {
+  width: 30%;
+  border-right: 1px dashed #17365d;
+}
+
+.coupon-copy:last-child {
+  width: 70%;
+  padding-left: 10mm;
+  padding-right: 10mm;
+}
+
+.coupon-content {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: #152238;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.coupon-watermark {
+  position: absolute;
+  z-index: 0;
+  width: 58mm;
+  height: 58mm;
+  left: 50%;
+  top: 56%;
+  object-fit: contain;
+  transform: translate(-50%, -50%);
+  opacity: 0.055;
+}
+
+.coupon-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 3mm;
+  padding-bottom: 3mm;
+  border-bottom: 1px solid #17365d;
+}
+
+.coupon-logo {
+  width: 16mm;
+  height: 16mm;
+  flex: 0 0 16mm;
+  object-fit: contain;
+}
+
+.coupon-header h1 {
+  margin: 0;
+  color: #17365d;
+  font-size: 11pt;
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.coupon-header p {
+  margin: 1mm 0 0;
+  color: #52647a;
+  font-size: 6.5pt;
+  line-height: 1.25;
+}
+
+.coupon-copy-label {
+  align-self: flex-end;
+  margin-top: 3mm;
+  color: #17365d;
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+
+.coupon-fields {
+  display: grid;
+  gap: 3.5mm;
+  margin-top: 5mm;
+}
+
+.coupon-fields div {
+  display: flex;
+  align-items: baseline;
+  gap: 2mm;
+  min-height: 6mm;
+  border-bottom: 1px solid #b8c5d3;
+}
+
+.coupon-fields span {
+  flex: 0 0 auto;
+  color: #52647a;
+  font-size: 7pt;
+  font-weight: 600;
+}
+
+.coupon-fields strong {
+  min-width: 0;
+  color: #152238;
+  font-size: 8.5pt;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+
+.coupon-blank-field {
+  flex: 1;
+  min-height: 4mm;
+}
+
+.coupon-signature {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1mm;
+  margin-top: auto;
+  padding-top: 4mm;
+}
+
+.coupon-signature span {
+  align-self: flex-end;
+  color: #52647a;
+  font-size: 7pt;
+  font-weight: 600;
+}
+
+.coupon-signature div {
+  width: 28mm;
+  border-bottom: 1px solid #17365d;
+}
+
+@media print {
+  @page {
+    size: A5 landscape;
+    margin: 0;
+  }
+
+  html,
+  body {
+    width: 210mm;
+    height: 148mm;
+    margin: 0;
+    padding: 0;
+    background: white;
+  }
+
+  body * {
+    visibility: hidden;
+  }
+
+  .print-area,
+  .print-area * {
+    visibility: visible;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+
+  .print-area {
+    position: absolute;
+    inset: 0;
+    display: block;
+    width: 210mm;
+    height: 148mm;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background: white;
+  }
+
+  .coupon-sheet {
+    width: 210mm;
+    height: 148mm;
+    page-break-after: avoid;
+    page-break-inside: avoid;
+  }
+
+  .coupon-copy {
+    break-inside: avoid;
+  }
+}
